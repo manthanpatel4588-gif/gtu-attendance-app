@@ -55,26 +55,26 @@ export const DayAttendance: React.FC<DayAttendanceProps> = ({
   const eligibleEntries = entries.filter(e => e.isEligibleForB1 && e.subjectCode !== 'FREE' && e.type !== 'Free');
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
       {/* Date & Version Selection Header */}
       <div className="card-panel" style={{ background: '#ffffff', border: '1px solid var(--border-color)' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
           
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
             <div>
-              <div style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', fontWeight: 600 }}>GTU ATTENDANCE MARKING</div>
-              <h1 style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-main)' }}>Day-wise Attendance</h1>
+              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 700, letterSpacing: '0.05em' }}>GTU ATTENDANCE MARKING</div>
+              <h1 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-main)' }}>Day-wise Attendance</h1>
             </div>
 
             {/* Quick Date Controls */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-              <button onClick={() => shiftDate(-1)} className="btn btn-outline" style={{ padding: '8px 12px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <button onClick={() => shiftDate(-1)} className="btn btn-outline" style={{ padding: '6px 10px', fontSize: '0.8125rem' }}>
                 <ChevronLeft size={16} /> Prev
               </button>
-              <button onClick={setToday} className="btn btn-outline" style={{ padding: '8px 12px' }}>
+              <button onClick={setToday} className="btn btn-outline" style={{ padding: '6px 10px', fontSize: '0.8125rem' }}>
                 Today
               </button>
-              <button onClick={() => shiftDate(1)} className="btn btn-outline" style={{ padding: '8px 12px' }}>
+              <button onClick={() => shiftDate(1)} className="btn btn-outline" style={{ padding: '6px 10px', fontSize: '0.8125rem' }}>
                 Next <ChevronRight size={16} />
               </button>
             </div>
@@ -88,16 +88,16 @@ export const DayAttendance: React.FC<DayAttendanceProps> = ({
               justifyContent: 'space-between',
               background: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)',
               border: '2px solid var(--primary-blue-border)',
-              borderRadius: 'var(--radius-lg)',
-              padding: '16px 20px',
+              borderRadius: 'var(--radius-md)',
+              padding: '14px 16px',
               flexWrap: 'wrap',
-              gap: '16px',
+              gap: '12px',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <div style={{
-                width: '46px',
-                height: '46px',
+                width: '42px',
+                height: '42px',
                 borderRadius: '12px',
                 background: 'var(--primary-blue)',
                 color: '#ffffff',
@@ -106,31 +106,31 @@ export const DayAttendance: React.FC<DayAttendanceProps> = ({
                 justifyContent: 'center',
                 boxShadow: '0 4px 10px rgba(37, 99, 235, 0.3)'
               }}>
-                <Calendar size={24} />
+                <Calendar size={22} />
               </div>
 
               <div>
-                <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--primary-blue-hover)', textTransform: 'uppercase' }}>
-                  Selected Date (Source of Truth)
+                <div style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--primary-blue-hover)', textTransform: 'uppercase' }}>
+                  Selected Date
                 </div>
-                <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a' }}>
+                <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>
                   {formatDateReadable(selectedDate)} — <span style={{ color: 'var(--primary-blue)' }}>{dayName}</span>
                 </div>
               </div>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <label style={{ fontSize: '0.8125rem', fontWeight: 700, color: 'var(--text-main)' }}>Change Date:</label>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100%', maxWidth: '280px' }}>
               <input
                 type="date"
                 value={selectedDate}
                 onChange={(e) => setSelectedDate(e.target.value)}
                 style={{
-                  padding: '10px 14px',
+                  width: '100%',
+                  padding: '9px 12px',
                   borderRadius: 'var(--radius-md)',
                   border: '1px solid #93c5fd',
                   background: '#ffffff',
-                  fontSize: '0.95rem',
+                  fontSize: '0.9rem',
                   fontWeight: 700,
                   color: 'var(--text-main)',
                   boxShadow: 'var(--shadow-sm)',
@@ -143,7 +143,7 @@ export const DayAttendance: React.FC<DayAttendanceProps> = ({
           {/* Active Version Info Banner */}
           <div
             style={{
-              padding: '12px 16px',
+              padding: '10px 14px',
               borderRadius: 'var(--radius-md)',
               background: version.id === 'v1_old' ? '#fff7ed' : '#f0fdf4',
               border: `1px solid ${version.id === 'v1_old' ? '#fed7aa' : '#bbf7d0'}`,
@@ -151,23 +151,19 @@ export const DayAttendance: React.FC<DayAttendanceProps> = ({
               alignItems: 'center',
               justifyContent: 'space-between',
               flexWrap: 'wrap',
-              gap: '12px'
+              gap: '8px'
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <Info size={18} color={version.id === 'v1_old' ? '#c2410c' : '#15803d'} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Info size={16} color={version.id === 'v1_old' ? '#c2410c' : '#15803d'} />
               <div>
-                <span className={`badge-pill ${version.id === 'v1_old' ? 'badge-amber' : 'badge-green'}`} style={{ marginRight: '8px' }}>
+                <span className={`badge-pill ${version.id === 'v1_old' ? 'badge-amber' : 'badge-green'}`} style={{ marginRight: '6px' }}>
                   {version.name}
                 </span>
-                <span style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'var(--text-main)' }}>
+                <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-main)' }}>
                   {version.description}
                 </span>
               </div>
-            </div>
-
-            <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-muted)' }}>
-              Effective Range: {version.effective_from} to {version.effective_to || 'Present (Ongoing)'}
             </div>
           </div>
 
@@ -175,31 +171,28 @@ export const DayAttendance: React.FC<DayAttendanceProps> = ({
       </div>
 
       {/* Bulk Action Controls */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
         <div>
-          <h2 style={{ fontSize: '1.2rem', fontWeight: 800 }}>
+          <h2 style={{ fontSize: '1.1rem', fontWeight: 800 }}>
             {dayName}'s Schedule ({entries.length} Sessions)
           </h2>
-          <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
-            Lectures & Labs are categorized and counted separately.
-          </p>
         </div>
 
         {eligibleEntries.length > 0 && (
-          <div style={{ display: 'flex', gap: '8px' }}>
+          <div style={{ display: 'flex', gap: '8px', width: '100%', maxWidth: '360px' }}>
             <button
               onClick={() => onBulkMark(selectedDate, version.id, eligibleEntries, 'PRESENT')}
               className="btn btn-outline"
-              style={{ padding: '7px 12px', fontSize: '0.8125rem', color: 'var(--success-green)', borderColor: '#bbf7d0', background: '#f0fdf4' }}
+              style={{ flex: 1, padding: '8px 10px', fontSize: '0.75rem', color: 'var(--success-green)', borderColor: '#bbf7d0', background: '#f0fdf4' }}
             >
-              <CheckCheck size={16} /> Mark All Present
+              <CheckCheck size={15} /> All Present
             </button>
             <button
               onClick={() => onBulkMark(selectedDate, version.id, eligibleEntries, 'ABSENT')}
               className="btn btn-outline"
-              style={{ padding: '7px 12px', fontSize: '0.8125rem', color: 'var(--danger-red)', borderColor: '#fecaca', background: '#fef2f2' }}
+              style={{ flex: 1, padding: '8px 10px', fontSize: '0.75rem', color: 'var(--danger-red)', borderColor: '#fecaca', background: '#fef2f2' }}
             >
-              <Ban size={16} /> Mark All Absent
+              <Ban size={15} /> All Absent
             </button>
           </div>
         )}
@@ -207,17 +200,17 @@ export const DayAttendance: React.FC<DayAttendanceProps> = ({
 
       {/* Timetable Entries List */}
       {dayName === 'Sunday' ? (
-        <div className="card-panel" style={{ textAlign: 'center', padding: '40px 20px', background: '#ffffff' }}>
+        <div className="card-panel" style={{ textAlign: 'center', padding: '36px 16px', background: '#ffffff' }}>
           <div style={{ fontSize: '2.5rem', marginBottom: '8px' }}>🏖️</div>
-          <h3 style={{ fontSize: '1.2rem', fontWeight: 800 }}>Sunday Holiday</h3>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', marginTop: '4px' }}>
+          <h3 style={{ fontSize: '1.1rem', fontWeight: 800 }}>Sunday Holiday</h3>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.8125rem', marginTop: '4px' }}>
             No lectures scheduled for Sunday under GTU timetable version <b>{version.name}</b>.
           </p>
         </div>
       ) : entries.length === 0 ? (
-        <div className="card-panel" style={{ textAlign: 'center', padding: '40px 20px' }}>
+        <div className="card-panel" style={{ textAlign: 'center', padding: '36px 16px' }}>
           <div style={{ fontSize: '2.5rem', marginBottom: '8px' }}>📅</div>
-          <h3 style={{ fontSize: '1.2rem', fontWeight: 800 }}>No Timetable Entries Found</h3>
+          <h3 style={{ fontSize: '1.1rem', fontWeight: 800 }}>No Timetable Entries Found</h3>
         </div>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -233,101 +226,85 @@ export const DayAttendance: React.FC<DayAttendanceProps> = ({
                 key={entry.id}
                 className="card-panel"
                 style={{
-                  padding: '16px 20px',
+                  padding: '16px',
                   background: isFree ? '#f8fafc' : '#ffffff',
                   border: isFree ? '1px dashed #cbd5e1' : isLab ? '1px solid #ddd6fe' : '1px solid var(--border-color)',
                   borderLeft: isFree ? '4px solid #94a3b8' : isLab ? '5px solid #7c3aed' : '5px solid var(--primary-blue)',
                   opacity: isFree ? 0.85 : 1,
                   display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  flexWrap: 'wrap',
-                  gap: '16px',
+                  flexDirection: 'column',
+                  gap: '12px',
                 }}
               >
-                {/* Time & Subject Info */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flex: 1, minWidth: '280px' }}>
+                {/* Time & Subject Header */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '8px' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+                      <span className={`badge-pill ${isFree ? 'badge-grey' : isLab ? 'badge-amber' : 'badge-blue'}`} style={{ background: isLab ? '#f3e8ff' : undefined, color: isLab ? '#7c3aed' : undefined, borderColor: isLab ? '#ddd6fe' : undefined }}>
+                        {isLab ? <FlaskConical size={12} /> : <BookOpen size={12} />}
+                        {isLab ? 'LAB (PRACTICAL)' : isFree ? 'FREE PERIOD' : 'LECTURE (THEORY)'}
+                      </span>
+                      {!isFree && <span className="badge-pill badge-grey">Batch {entry.batch}</span>}
+                    </div>
+
+                    <h3 style={{ fontSize: '1rem', fontWeight: 800, color: isFree ? '#475569' : 'var(--text-main)', marginTop: '4px' }}>
+                      {entry.subjectName}
+                    </h3>
+                  </div>
+
                   <div style={{
-                    minWidth: '100px',
-                    padding: '8px 12px',
-                    borderRadius: 'var(--radius-md)',
+                    padding: '6px 10px',
+                    borderRadius: 'var(--radius-sm)',
                     background: isFree ? '#e2e8f0' : isLab ? '#f3e8ff' : 'var(--primary-blue-light)',
                     color: isFree ? '#475569' : isLab ? '#7c3aed' : 'var(--primary-blue-hover)',
-                    textAlign: 'center',
                     fontWeight: 700,
                     fontSize: '0.8125rem'
                   }}>
-                    <Clock size={14} style={{ display: 'inline', marginRight: '4px', verticalAlign: 'middle' }} />
+                    <Clock size={13} style={{ display: 'inline', marginRight: '4px', verticalAlign: 'middle' }} />
                     {entry.startTime} – {entry.endTime}
                   </div>
+                </div>
 
-                  <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                      <h3 style={{ fontSize: '1rem', fontWeight: 800, color: isFree ? '#475569' : 'var(--text-main)' }}>
-                        {entry.subjectName}
-                      </h3>
+                {/* Room & Faculty Details */}
+                <div style={{ display: 'flex', gap: '14px', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                  <span><MapPin size={13} style={{ verticalAlign: 'middle' }} /> Room: <b>{entry.room}</b></span>
+                  <span><User size={13} style={{ verticalAlign: 'middle' }} /> Faculty: <b>{entry.faculty}</b></span>
+                  {entry.notes && <span style={{ color: 'var(--warning-amber)' }}>ℹ️ {entry.notes}</span>}
+                </div>
 
-                      {!isFree && (
-                        <span className={`badge-pill ${isLab ? 'badge-amber' : 'badge-blue'}`} style={{ background: isLab ? '#f3e8ff' : undefined, color: isLab ? '#7c3aed' : undefined, borderColor: isLab ? '#ddd6fe' : undefined }}>
-                          {isLab ? <FlaskConical size={12} /> : <BookOpen size={12} />}
-                          {isLab ? 'LAB (PRACTICAL)' : 'LECTURE (THEORY)'}
-                        </span>
-                      )}
+                {/* Attendance Buttons - Full Width Touch Target for Mobile */}
+                {!isFree && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '4px' }}>
+                    <button
+                      onClick={() => onMarkAttendance(selectedDate, version.id, entry.id, entry.subjectCode, 'PRESENT')}
+                      className={`status-btn ${currentStatus === 'PRESENT' ? 'active-present' : ''}`}
+                      style={{ flex: 1 }}
+                    >
+                      <CheckCircle size={17} style={{ marginRight: '6px' }} />
+                      Present
+                    </button>
 
-                      {!isFree && (
-                        <span className="badge-pill badge-grey">Batch {entry.batch}</span>
-                      )}
+                    <button
+                      onClick={() => onMarkAttendance(selectedDate, version.id, entry.id, entry.subjectCode, 'ABSENT')}
+                      className={`status-btn ${currentStatus === 'ABSENT' ? 'active-absent' : ''}`}
+                      style={{ flex: 1 }}
+                    >
+                      <XCircle size={17} style={{ marginRight: '6px' }} />
+                      Absent
+                    </button>
 
-                      {isFree && (
-                        <span className="badge-pill badge-grey">FREE / EXCLUDED</span>
-                      )}
-                    </div>
-
-                    <div style={{ display: 'flex', gap: '16px', fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>
-                      <span><MapPin size={12} style={{ verticalAlign: 'middle' }} /> Room: <b>{entry.room}</b></span>
-                      <span><User size={12} style={{ verticalAlign: 'middle' }} /> Faculty: <b>{entry.faculty}</b></span>
-                      {entry.notes && <span style={{ color: 'var(--warning-amber)' }}>ℹ️ {entry.notes}</span>}
-                    </div>
+                    {currentStatus && (
+                      <button
+                        onClick={() => onMarkAttendance(selectedDate, version.id, entry.id, entry.subjectCode, 'CLEAR')}
+                        className="btn btn-ghost"
+                        style={{ padding: '8px 10px', fontSize: '0.75rem' }}
+                        title="Clear status"
+                      >
+                        <RotateCcw size={15} />
+                      </button>
+                    )}
                   </div>
-                </div>
-
-                {/* Attendance Marking Controls */}
-                <div>
-                  {isFree ? (
-                    <div style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'var(--text-muted)', fontStyle: 'italic', padding: '6px 12px', background: '#f1f5f9', borderRadius: 'var(--radius-sm)' }}>
-                      Free Period — Excluded
-                    </div>
-                  ) : (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <button
-                        onClick={() => onMarkAttendance(selectedDate, version.id, entry.id, entry.subjectCode, 'PRESENT')}
-                        className={`status-btn ${currentStatus === 'PRESENT' ? 'active-present' : ''}`}
-                      >
-                        <CheckCircle size={15} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
-                        Present
-                      </button>
-
-                      <button
-                        onClick={() => onMarkAttendance(selectedDate, version.id, entry.id, entry.subjectCode, 'ABSENT')}
-                        className={`status-btn ${currentStatus === 'ABSENT' ? 'active-absent' : ''}`}
-                      >
-                        <XCircle size={15} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
-                        Absent
-                      </button>
-
-                      {currentStatus && (
-                        <button
-                          onClick={() => onMarkAttendance(selectedDate, version.id, entry.id, entry.subjectCode, 'CLEAR')}
-                          className="btn btn-ghost"
-                          style={{ padding: '6px 8px', fontSize: '0.75rem' }}
-                          title="Clear status"
-                        >
-                          <RotateCcw size={14} /> Clear
-                        </button>
-                      )}
-                    </div>
-                  )}
-                </div>
+                )}
               </div>
             );
           })}
