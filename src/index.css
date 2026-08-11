@@ -58,6 +58,9 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -105,38 +108,44 @@ input, select, textarea {
   background-color: var(--bg-main);
 }
 
-.sidebar-desktop {
-  width: 260px;
-  background: #ffffff;
-  border-right: 1px solid var(--border-color);
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 40;
+/* Desktop Only Sidebar & Main Content Margin */
+@media (min-width: 1025px) {
+  .sidebar-desktop {
+    width: 260px;
+    background: #ffffff;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 40;
+  }
+
+  .main-content {
+    flex: 1;
+    margin-left: 260px;
+    padding: 28px 36px 48px;
+    max-width: 1400px;
+    width: calc(100% - 260px);
+    box-sizing: border-box;
+  }
 }
 
-.main-content {
-  flex: 1;
-  margin-left: 260px;
-  padding: 28px 36px 48px;
-  max-width: 1400px;
-  width: calc(100% - 260px);
-  box-sizing: border-box;
-}
-
+/* Mobile & Tablet (<= 1024px) - Strictly NO margin-left */
 @media (max-width: 1024px) {
   .sidebar-desktop {
     display: none !important;
   }
+
   .main-content {
     margin-left: 0 !important;
-    padding: 16px 12px 100px !important;
+    padding: 12px 10px 96px !important;
     width: 100% !important;
     max-width: 100vw !important;
     overflow-x: hidden !important;
+    box-sizing: border-box !important;
   }
 }
 
@@ -158,7 +167,7 @@ input, select, textarea {
 
 @media (max-width: 768px) {
   .card-panel {
-    padding: 16px 12px !important;
+    padding: 14px 10px !important;
     border-radius: var(--radius-md) !important;
   }
 }
@@ -303,7 +312,7 @@ input, select, textarea {
 /* Mobile-Specific Responsive Overrides */
 @media (max-width: 768px) {
   h1 {
-    font-size: 1.3rem !important;
+    font-size: 1.25rem !important;
   }
   h2 {
     font-size: 1.05rem !important;
@@ -313,10 +322,5 @@ input, select, textarea {
     flex: 1;
     min-height: 46px;
     font-size: 0.875rem;
-  }
-
-  /* Force grids to single column on mobile */
-  .grid-responsive {
-    grid-template-columns: 1fr !important;
   }
 }
