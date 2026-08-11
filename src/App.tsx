@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sidebar } from './components/Sidebar';
-import { MobileNav } from './components/MobileNav';
+import { TopNavbar } from './components/TopNavbar';
 import { Dashboard } from './components/Dashboard';
 import { DayAttendance } from './components/DayAttendance';
 import { SubjectCalculator } from './components/SubjectCalculator';
@@ -17,7 +16,7 @@ import {
 } from './data/defaultData';
 import { StudentProfile, TimetableVersion, TimetableEntry, AttendanceRecord } from './types';
 
-const SCHEMA_VERSION = 'gtu_schema_v5_july_baseline';
+const SCHEMA_VERSION = 'gtu_schema_v6_top_navbar_layout';
 
 export function App() {
   const [activeTab, setActiveTab] = useState<string>('dashboard');
@@ -159,23 +158,15 @@ export function App() {
 
   return (
     <div className="app-container">
-      {/* Desktop Sidebar */}
-      <Sidebar
+      {/* Top Navbar Across All Devices */}
+      <TopNavbar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         student={student}
         onOpenTestModal={() => setIsTestModalOpen(true)}
       />
 
-      {/* Mobile Top & Bottom Navigation */}
-      <MobileNav
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        student={student}
-        onOpenTestModal={() => setIsTestModalOpen(true)}
-      />
-
-      {/* Main View Area */}
+      {/* Main View Area Directly Below Header */}
       <main className="main-content">
         {activeTab === 'dashboard' && (
           <Dashboard

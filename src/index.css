@@ -94,13 +94,11 @@ input, select, textarea {
   background: #cbd5e1;
   border-radius: 99px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
 
-/* App Layout Grid */
+/* App Container Layout - TOP NAVBAR LAYOUT */
 .app-container {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
   width: 100%;
   max-width: 100vw;
@@ -108,44 +106,118 @@ input, select, textarea {
   background-color: var(--bg-main);
 }
 
-/* Desktop Only Sidebar & Main Content Margin */
-@media (min-width: 1025px) {
-  .sidebar-desktop {
-    width: 260px;
-    background: #ffffff;
-    border-right: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 40;
-  }
+/* Top Navbar Styling */
+.top-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+}
 
-  .main-content {
-    flex: 1;
-    margin-left: 260px;
-    padding: 28px 36px 48px;
-    max-width: 1400px;
-    width: calc(100% - 260px);
-    box-sizing: border-box;
+.top-navbar-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.desktop-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.top-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+}
+
+.top-nav-btn:hover {
+  background: #f1f5f9;
+  color: var(--text-main);
+}
+
+.top-nav-btn.active {
+  background: var(--primary-blue-light);
+  color: var(--primary-blue-hover);
+  border-color: var(--primary-blue-border);
+  font-weight: 700;
+}
+
+/* Mobile Horizontal Sub-Bar */
+.mobile-sub-nav {
+  display: none;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 8px 12px;
+  border-top: 1px solid var(--border-color);
+  gap: 8px;
+  background: #ffffff;
+}
+
+.mobile-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+}
+
+.mobile-tab-btn.active {
+  background: var(--primary-blue);
+  color: #ffffff;
+  border-color: var(--primary-blue);
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .desktop-nav-links {
+    display: none;
+  }
+  .mobile-sub-nav {
+    display: flex;
+  }
+  .hide-on-mobile {
+    display: none;
   }
 }
 
-/* Mobile & Tablet (<= 1024px) - Strictly NO margin-left */
-@media (max-width: 1024px) {
-  .sidebar-desktop {
-    display: none !important;
-  }
+/* Main Content Area - Absolutely NO left margin! */
+.main-content {
+  flex: 1;
+  margin: 0 auto !important;
+  padding: 24px 20px 48px !important;
+  max-width: 1300px;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: hidden !important;
+}
 
+@media (max-width: 768px) {
   .main-content {
-    margin-left: 0 !important;
-    padding: 12px 10px 96px !important;
-    width: 100% !important;
-    max-width: 100vw !important;
-    overflow-x: hidden !important;
-    box-sizing: border-box !important;
+    padding: 14px 12px 60px !important;
   }
 }
 
@@ -167,7 +239,7 @@ input, select, textarea {
 
 @media (max-width: 768px) {
   .card-panel {
-    padding: 14px 10px !important;
+    padding: 16px 12px !important;
     border-radius: var(--radius-md) !important;
   }
 }
@@ -237,22 +309,6 @@ input, select, textarea {
 .btn-primary:hover {
   background: var(--primary-blue-hover);
   box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
-}
-
-.btn-success {
-  background: var(--success-green);
-  color: #ffffff;
-}
-.btn-success:hover {
-  background: #15803d;
-}
-
-.btn-danger {
-  background: var(--danger-red);
-  color: #ffffff;
-}
-.btn-danger:hover {
-  background: #b91c1c;
 }
 
 .btn-outline {
